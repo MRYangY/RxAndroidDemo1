@@ -12,7 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -37,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private RecyclerView mList;
-    private TextView mStart;
+    private Button mStart;
 
     private Result result;
     private ArrayList<Result.ResultsBean> mBeans;
     private MyAdaptor mAdaptor;
+    private ProgressBar mPb;
 
 
     @Override
@@ -49,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mList = (RecyclerView) findViewById(R.id.show_data);
-        mStart = (TextView) findViewById(R.id.start);
+        mStart = (Button) findViewById(R.id.start);
+        mPb = (ProgressBar) findViewById(R.id.progress);
         mStart.setOnClickListener(mStartListener);
         mAdaptor = new MyAdaptor();
         mList.setLayoutManager(new LinearLayoutManager(this));
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNext(@NonNull ArrayList<Result.ResultsBean> s) {
                 mBeans = s;
+                mPb.setVisibility(View.GONE);
                 mAdaptor.notifyDataSetChanged();
             }
 
@@ -104,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mStartListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mPb.setVisibility(View.VISIBLE);
             getData();
         }
     };
