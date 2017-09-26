@@ -14,6 +14,10 @@ public class TestOne {
     private void function() {
 
     }
+    private void func() {
+
+    }
+
 
 
 }
