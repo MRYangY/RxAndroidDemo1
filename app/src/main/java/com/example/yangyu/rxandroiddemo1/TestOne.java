@@ -5,7 +5,15 @@ package com.example.yangyu.rxandroiddemo1;
  */
 
 public class TestOne {
+    private void function(int i) {
+
+    }
+    private void function(int i,int j) {
+
+    }
     private void function() {
 
     }
+
+
 }
