@@ -18,6 +18,10 @@ public class TestOne {
 
     }
 
+    private void func(int i) {
+
+    }
+
 
 
 }
